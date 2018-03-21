@@ -36,6 +36,15 @@ if ($mysqli->connect_errno) {
 //    };
 //    return $resultat;
 //}
+function get_flights(){
+    $query = 'SELECT * FROM vol';
+}
+function get_users(){
+    $query = 'SELECT * FROM utilisateur';
+}
+function inscription(){
+        $quety = 'INSERT INTO utilisateur (nom,prenom,username,password,mail) VALUES ()';
+}
 
 /**
  * Fournit un article de la table article à partir de son id
