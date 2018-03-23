@@ -60,7 +60,7 @@ function get_users(){
 function check_mail($usermail){
     $check = get_users();
     for($i = 0 ; $i < count($check);$i++){
-        if ($check[$i]['mail'] = $usermail){
+        if ($check[$i]['mail'] == $usermail){
             return false;
         }
     }
@@ -69,7 +69,8 @@ function check_mail($usermail){
 
 function inscription($lastname,$firstname,$mail,$password){
     global $mysqli;
-    $query = 'INSERT INTO utilisateur (nom,prenom,username,password,mail) VALUES ($lastname,$firstname,$mail,$password,$mail)';
+    var_dump($lastname,$firstname,$mail,$password);
+    $query = 'INSERT INTO `utilisateur` (`nom`, `prenom`, `username`, `password`, `mail`) VALUES ("'.$lastname.'","'.$firstname.'","'.$mail.'","'.$password.'","'.$mail.'");';
     $res = $mysqli->query($query);
 }
 
