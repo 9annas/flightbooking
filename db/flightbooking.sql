@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 18 Mars 2018 à 23:23
+-- Généré le :  Mer 21 Mars 2018 à 11:54
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -59,6 +59,13 @@ CREATE TABLE `utilisateur` (
   `mail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `username`, `password`, `mail`) VALUES
+(1, 'Arif', 'Badreddine', 'bigg-hkayen125@hotmail.com', '123456', 'bigg-hkayen125@hotmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -73,8 +80,23 @@ CREATE TABLE `vol` (
   `ville_dep` varchar(255) NOT NULL,
   `ville_arr` varchar(255) NOT NULL,
   `dep_time` text NOT NULL,
-  `vol_duration` varchar(100) NOT NULL
+  `vol_duration` varchar(100) NOT NULL,
+  `comp_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `vol`
+--
+
+INSERT INTO `vol` (`id`, `num_vol`, `nb_place_eco`, `nb_place_first`, `ville_dep`, `ville_arr`, `dep_time`, `vol_duration`, `comp_name`) VALUES
+(1, '1937', 200, 50, 'Casablanca', 'Montreal', '17h00', '7h30', 'ram.png'),
+(2, '209', 210, 60, 'Montreal', 'Casablanca', '16h10', '6h50', 'aircad.png'),
+(3, '7850', 220, 55, 'Paris', 'New York', '9h20', '6h20', 'airfr.png'),
+(4, '3310', 200, 60, 'New York', 'Paris', '18h30', '7h10', 'unair.png'),
+(5, '994', 300, 70, 'Vancouver', 'Tokyo', '19h10', '8:20', 'japanair.png'),
+(6, '420', 400, 20, 'Marrakech', 'Johannesburg', '11h00', '7:00', 'saair.png'),
+(7, '720', 320, 60, 'Johannesburg', 'Marrakech', '20h10', '6h50', 'ram.png'),
+(8, '1080', 270, 50, 'Tokyo', 'Vencouver', '10h00', '8h40', 'emirates.png');
 
 --
 -- Index pour les tables exportées
@@ -119,12 +141,12 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `vol`
 --
 ALTER TABLE `vol`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Contraintes pour les tables exportées
 --
