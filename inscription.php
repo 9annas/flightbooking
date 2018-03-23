@@ -21,11 +21,6 @@ $validation = array(
         'value' => null,
         'err_msg' => 'Password must have at least 5 characters',
     ),
-    'confirm' => array(
-        'is_valid' => false,
-        'value' => null,
-        'err_msg' => 'The password doesn\'t match',
-    ),
 );
 
 //Validation when in reception
@@ -49,15 +44,11 @@ if($en_post){
 
 
     //Password
-    $validation['age']['value'] = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
+    $validation['pwd']['value'] = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
     //Minimum 5 characters
     $validation['pwd']['is_valid'] = strlen($validation['pwd']['value']) >= 5;
 
 
-    //Password confirm
-    $validation['age']['value'] = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
-    //the passwords must be identical
-    $validation['confirm']['is_valid'] = $validation['confirm']['value'] === $validation['pwd']['value'];
 
 
 }
@@ -155,19 +146,7 @@ if($form_valide){
                 ?>
             </div>
 
-            <div>
-                <label for="confirm">Confirm password</label>
-                <input type="password" name="confirm" id="email" placeholder="Confirm your password"
-                       class="<?= $en_post && !$validation['confirm']['is_valid'] ? 'invalide' : '' ?>"
-                       value="<?= $en_post ? $validation['confirm']['value'] : '' ?>"
-                />
 
-                <?php if($en_post && !$validation['confirm']['is_valid']){
-                    echo '<span>' . $validation['confirm']['err_msg'] . '</span>';
-                }
-
-                ?>
-            </div>
 
         </fieldset>
         <input type="submit" value="Submit">
