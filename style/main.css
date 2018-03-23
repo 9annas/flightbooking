@@ -1,0 +1,63 @@
+/*********** CSS flight.php *******************/
+*{
+    font-family: Arial, sans-serif;
+}
+#flight{
+    min-width: 550px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.prix, .details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.prix{
+    background-color: #ffa366;
+}
+
+.prix form{
+    margin: 0;
+}
+
+.prix span{
+    font-size: 2em;
+    color: white;
+    padding: 5px;
+}
+
+.prix form input[type="number"]{
+    border: none;
+    height: 35px;
+}
+
+.prix form input[type='submit']{
+    padding: 16px;
+    text-decoration: none;
+    color: white;
+    background-color: #ff6600;
+    border: none;
+}
+
+.prix form input[type="submit"]:hover{
+    background-color: #ff8a3c;
+}
+
+.details{
+    background-color: lightgrey;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.details img{
+    width: 100px;
+    height: 15px;
+
+
+}
+
+.block{
+    display: block;
+}
