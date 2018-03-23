@@ -14,22 +14,11 @@ var_dump($display);
     <h1></h1>
 </header>
 <main>
-<!--    <form action="flights.php" method="post" name="flightfilter">-->
-<!--        <label for="departure">FROM</label>-->
-<!--        <select name="departure">-->
-<!--            <option value="volvo">Volvo XC90</option>-->
-<!--            <option value="saab">Saab 95</option>-->
-<!--            <option value="mercedes">Mercedes SLK</option>-->
-<!--            <option value="audi">Audi TT</option>-->
-<!--        </select><br>-->
-<!--        <label for="arrival">TO</label>-->
-<!--        <select name="arrival">-->
-<!--            <option value="volvo">Volvo XC90</option>-->
-<!--            <option value="saab">Saab 95</option>-->
-<!--            <option value="mercedes">Mercedes SLK</option>-->
-<!--            <option value="audi">Audi TT</option>-->
-<!--        </select><br>-->
-<!--    </form>-->
+    <a href="flights.php">flights</a>
+    <a href="inscription.php">inscription</a>
+    <a href="login.php">login</a>
+<!--    <a href="flights.php">flights</a>-->
+
 </main>
 </body>
 </html>

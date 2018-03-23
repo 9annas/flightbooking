@@ -1,4 +1,5 @@
 <?php
+require_once ('db/connection.php');
 $en_post = $_SERVER['REQUEST_METHOD'] === 'POST'; //Indique si on est en réception
 $validation = array(
     'firstname' => array(
@@ -52,19 +53,19 @@ if($en_post){
 
 
 }
-
-
-
+var_dump($validation['pwd']['value']);
+var_dump($_POST);
 //All form
 $form_valide = $validation['firstname']['is_valid']
     && $validation['lastname']['is_valid']
     && $validation['email']['is_valid']
     && $validation['pwd']['is_valid'];
-if($form_valide){
-    require_once ('db/connection.php');
-    inscription($validation['lastname']['is_valid'],['firstname']['is_valid'],$validation['pwd']['is_valid'],$validation['email']['is_valid']);
+if($form_valide && check_mail($validation['email']['value'])=== true ){
+    inscription($validation['lastname']['value'],$validation['firstname']['value'],$validation['email']['value'],$validation['pwd']['value']);
     var_dump('You\'re good to go');
 }
+var_dump($validation['email']['value']);
+var_dump(get_users());
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -128,12 +129,11 @@ if($form_valide){
                 <?php if($en_post && !$validation['email']['is_valid']){
                     echo '<span>' . $validation['email']['err_msg'] . '</span>';
                 }
-
                 ?>
             </div>
             <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="email" placeholder="Password"
+                <label for="pwd">Password</label>
+                <input type="password" name="pwd" id="pwd" placeholder="Password"
                        class="<?= $en_post && !$validation['pwd']['is_valid'] ? 'invalide' : '' ?>"
                        value="<?= $en_post ? $validation['pwd']['value'] : '' ?>"
                 />

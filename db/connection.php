@@ -55,8 +55,18 @@ function get_users(){
         array_push($resultat,$users);
     };
     return $resultat;
-
 }
+
+function check_mail($usermail){
+    $check = get_users();
+    for($i = 0 ; $i < count($check);$i++){
+        if ($check[$i]['mail'] = $usermail){
+            return false;
+        }
+    }
+    return true;
+}
+
 function inscription($lastname,$firstname,$mail,$password){
     global $mysqli;
     $query = 'INSERT INTO utilisateur (nom,prenom,username,password,mail) VALUES ($lastname,$firstname,$mail,$password,$mail)';
