@@ -61,6 +61,8 @@ $form_valide = $validation['firstname']['is_valid']
     && $validation['email']['is_valid']
     && $validation['pwd']['is_valid'];
 if($form_valide){
+    require_once ('db/connection.php');
+    inscription($validation['lastname']['is_valid'],['firstname']['is_valid'],$validation['pwd']['is_valid'],$validation['email']['is_valid']);
     var_dump('You\'re good to go');
 }
 ?>
@@ -105,7 +107,6 @@ if($form_valide){
 
                 ?>
             </div>
-
             <div>
                 <label for="lastname">Lastname</label>
                 <input type="text" name="lastname" id="lastname" placeholder="Lastname"
@@ -117,7 +118,6 @@ if($form_valide){
 
                 ?>
             </div>
-
             <div>
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" placeholder="Courriel"
@@ -131,23 +131,17 @@ if($form_valide){
 
                 ?>
             </div>
-
             <div>
                 <label for="password">Password</label>
                 <input type="password" name="password" id="email" placeholder="Password"
                        class="<?= $en_post && !$validation['pwd']['is_valid'] ? 'invalide' : '' ?>"
                        value="<?= $en_post ? $validation['pwd']['value'] : '' ?>"
                 />
-
                 <?php if($en_post && !$validation['pwd']['is_valid']){
                     echo '<span>' . $validation['pwd']['err_msg'] . '</span>';
                 }
-
                 ?>
             </div>
-
-
-
         </fieldset>
         <input type="submit" value="Submit">
     </form>

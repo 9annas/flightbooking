@@ -37,13 +37,30 @@ if ($mysqli->connect_errno) {
 //    return $resultat;
 //}
 function get_flights(){
+    global $mysqli;
     $query = 'SELECT * FROM vol';
+    $res = $mysqli->query($query);
+    $resultat = array();
+    while ($flights = $res->fetch_assoc()) {
+        array_push($resultat,$flights);
+    };
+    return $resultat;
 }
 function get_users(){
+    global $mysqli;
     $query = 'SELECT * FROM utilisateur';
+    $res = $mysqli->query($query);
+    $resultat = array();
+    while ($users = $res->fetch_assoc()) {
+        array_push($resultat,$users);
+    };
+    return $resultat;
+
 }
-function inscription(){
-        $quety = 'INSERT INTO utilisateur (nom,prenom,username,password,mail) VALUES ()';
+function inscription($lastname,$firstname,$mail,$password){
+    global $mysqli;
+    $query = 'INSERT INTO utilisateur (nom,prenom,username,password,mail) VALUES ($lastname,$firstname,$mail,$password,$mail)';
+    $res = $mysqli->query($query);
 }
 
 /**
