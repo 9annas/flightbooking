@@ -63,9 +63,11 @@ $form_valide = $validation['firstname']['is_valid']
 if($form_valide && check_mail($validation['email']['value'])=== true ){
     inscription($validation['lastname']['value'],$validation['firstname']['value'],$validation['email']['value'],$validation['pwd']['value']);
     var_dump('You\'re good to go');
+    var_dump(get_users());
+    var_dump($validation['email']['value']);
 }
-var_dump($validation['email']['value']);
-var_dump(get_users());
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -126,7 +128,7 @@ var_dump(get_users());
                        value="<?= $en_post ? $validation['email']['value'] : '' ?>"
                 />
 
-                <?php if($en_post && !$validation['email']['is_valid']){
+                <?php if($en_post && !$validation['email']['is_valid'] || ! check_mail($validation['email']['value'])){
                     echo '<span>' . $validation['email']['err_msg'] . '</span>';
                 }
                 ?>
