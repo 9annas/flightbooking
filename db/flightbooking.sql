@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 24 Mars 2018 à 21:51
+-- Généré le :  Dim 25 Mars 2018 à 13:45
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -107,7 +107,13 @@ INSERT INTO `vol` (`id`, `num_vol`, `nb_place`, `type`, `ville_dep`, `ville_arr`
 (17, '545', 70, 1, 'Vancoucer', 'Tokyo', '19h10', '8h20', 'japanair.png', 1700),
 (19, '477', 20, 1, 'Marrakech', 'Johannesburg', '11h00', '7h00', 'saair.png', 1000),
 (21, '598', 60, 1, 'Johannesburg', 'Marrakech', '20h10', '6h50', 'ram.png', 1145),
-(23, '655', 50, 1, 'Tokyo', 'Vencouver', '10h00', '8h40', 'emirates.png', 1874);
+(23, '655', 50, 1, 'Tokyo', 'Vencouver', '10h00', '8h40', 'emirates.png', 1874),
+(24, '4847', 20, 3, 'Casablanca', 'Montreal', '17h00', '7h30', 'ram.png', 900),
+(27, '8799', 35, 3, 'Montreal', 'Casablanca', '16h10', '6h50', 'aircad.png', 870),
+(28, '7484', 25, 3, 'Vancouver', 'Tokyo', '19h10', '8h20', 'japanair.png', 1050),
+(31, '9999', 32, 3, 'Tokyo', 'Vancouver', '10h00', '8h40', 'emirates.png', 1200),
+(32, '1545', 22, 3, 'Paris', 'New York', '9h20', '6h30', 'airfr.png', 1100),
+(35, '666', 24, 3, 'New York', 'Paris', '18h30', '7h10', 'unair.png', 1150);
 
 --
 -- Index pour les tables exportées
@@ -157,7 +163,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `vol`
 --
 ALTER TABLE `vol`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- Contraintes pour les tables exportées
 --
