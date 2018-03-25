@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 23 Mars 2018 à 10:39
+-- Généré le :  Sam 24 Mars 2018 à 21:51
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -64,7 +64,9 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `username`, `password`, `mail`) VALUES
-(1, 'Arif', 'Badreddine', 'bigg-hkayen125@hotmail.com', '123456', 'bigg-hkayen125@hotmail.com');
+(1, 'Arif', 'Badreddine', 'bigg-hkayen125@hotmail.com', '123456', 'bigg-hkayen125@hotmail.com'),
+(2, 'hello', 'world', 'helloworld@hotmail.com', '123456', 'helloworld@hotmail.com'),
+(3, 'Badr', 'Arif', 'bigg@hotmail.com', '123456', 'bigg@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -75,30 +77,37 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `username`, `password`, `mail`
 CREATE TABLE `vol` (
   `id` int(11) NOT NULL,
   `num_vol` varchar(255) NOT NULL,
-  `nb_place_eco` int(11) NOT NULL,
-  `nb_place_first` int(11) NOT NULL,
+  `nb_place` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
   `ville_dep` varchar(255) NOT NULL,
   `ville_arr` varchar(255) NOT NULL,
   `dep_time` text NOT NULL,
   `vol_duration` varchar(100) NOT NULL,
   `comp_name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
-  `price_first` int(11) NOT NULL
+  `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `vol`
 --
 
-INSERT INTO `vol` (`id`, `num_vol`, `nb_place_eco`, `nb_place_first`, `ville_dep`, `ville_arr`, `dep_time`, `vol_duration`, `comp_name`, `price`, `price_first`) VALUES
-(1, '1937', 200, 50, 'Casablanca', 'Montreal', '17h00', '7h30', 'ram.png', 700, 1000),
-(2, '209', 210, 60, 'Montreal', 'Casablanca', '16h10', '6h50', 'aircad.png', 600, 980),
-(3, '7850', 220, 55, 'Paris', 'New York', '9h20', '6h20', 'airfr.png', 578, 890),
-(4, '3310', 200, 60, 'New York', 'Paris', '18h30', '7h10', 'unair.png', 760, 1200),
-(5, '994', 300, 70, 'Vancouver', 'Tokyo', '19h10', '8h20', 'japanair.png', 970, 1700),
-(6, '420', 400, 20, 'Marrakech', 'Johannesburg', '11h00', '7:00', 'saair.png', 658, 1000),
-(7, '720', 320, 60, 'Johannesburg', 'Marrakech', '20h10', '6h50', 'ram.png', 784, 1145),
-(8, '1080', 270, 50, 'Tokyo', 'Vencouver', '10h00', '8h40', 'emirates.png', 987, 1874);
+INSERT INTO `vol` (`id`, `num_vol`, `nb_place`, `type`, `ville_dep`, `ville_arr`, `dep_time`, `vol_duration`, `comp_name`, `price`) VALUES
+(1, '1937', 200, 2, 'Casablanca', 'Montreal', '17h00', '7h30', 'ram.png', 700),
+(2, '209', 210, 2, 'Montreal', 'Casablanca', '16h10', '6h50', 'aircad.png', 600),
+(3, '7850', 220, 2, 'Paris', 'New York', '9h20', '6h20', 'airfr.png', 578),
+(4, '3310', 200, 2, 'New York', 'Paris', '18h30', '7h10', 'unair.png', 760),
+(5, '994', 300, 2, 'Vancouver', 'Tokyo', '19h10', '8h20', 'japanair.png', 970),
+(6, '420', 400, 2, 'Marrakech', 'Johannesburg', '11h00', '7:00', 'saair.png', 658),
+(7, '720', 320, 2, 'Johannesburg', 'Marrakech', '20h10', '6h50', 'ram.png', 784),
+(8, '1080', 270, 2, 'Tokyo', 'Vencouver', '10h00', '8h40', 'emirates.png', 987),
+(10, '5484', 50, 1, 'Casablanca', 'Montreal', '17h00', '7h30', 'ram.png', 1000),
+(11, '4548', 60, 1, 'Montreal', 'Casablanca', '16h10', '6h50', 'aricad.png', 980),
+(14, '217', 55, 1, 'Paris', 'New York', '9h20', '6h20', 'airfr.png', 890),
+(15, '324', 60, 1, 'New York', 'Paris', '18h30', '7h10', 'unair.png', 1200),
+(17, '545', 70, 1, 'Vancoucer', 'Tokyo', '19h10', '8h20', 'japanair.png', 1700),
+(19, '477', 20, 1, 'Marrakech', 'Johannesburg', '11h00', '7h00', 'saair.png', 1000),
+(21, '598', 60, 1, 'Johannesburg', 'Marrakech', '20h10', '6h50', 'ram.png', 1145),
+(23, '655', 50, 1, 'Tokyo', 'Vencouver', '10h00', '8h40', 'emirates.png', 1874);
 
 --
 -- Index pour les tables exportées
@@ -143,12 +152,12 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `vol`
 --
 ALTER TABLE `vol`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- Contraintes pour les tables exportées
 --

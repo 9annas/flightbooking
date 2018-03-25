@@ -35,7 +35,7 @@ var_dump($_POST);
                         <span> <?= $display[$i]['price']?>$</span>
                         <form method="post" name="selected_flight">
                             <input type="hidden" name="myflight" value="<?=$display[$i]['id']?>">
-                            <label for="number">Number of tickets: <?= $display[$i]['nb_place_eco']?></label>
+                            <label for="number">Number of tickets: <?= $display[$i]['nb_place']?></label>
 <!--                            <input id="number" name="number" type="number" min="1">-->
                             <input type="submit" value="SELECT"></>
                         </form>
