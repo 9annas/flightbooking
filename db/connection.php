@@ -46,6 +46,7 @@ function get_flights(){
     };
     return $resultat;
 }
+
 function get_users(){
     global $mysqli;
     $query = 'SELECT * FROM utilisateur';
@@ -86,6 +87,23 @@ function get_flight_id($myid){
         array_push($resultat,$flights);
     };
     return $resultat;
+}
+
+function research_filter($depp,$arr,$typeclass){
+    global $mysqli;
+    $query = 'SELECT * FROM vol WHERE ville_dep = "'.$depp.'" AND ville_arr = "'.$arr.'" AND type_class = "'.$typeclass.'"' ;
+    $res = $mysqli->query($query);
+    $resultat = array();
+    while ($filters = $res->fetch_assoc()) {
+        array_push($resultat,$filters);
+    };
+    return $resultat;
+}
+
+function add_reservation(){
+//    global $mysqli;
+//    $query = '';
+//    $res = $mysqli->query($query);
 }
 
 function inscription($lastname,$firstname,$mail,$password){
