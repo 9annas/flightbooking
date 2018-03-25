@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 25 Mars 2018 à 13:45
+-- Généré le :  Dim 25 Mars 2018 à 14:34
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -78,7 +78,7 @@ CREATE TABLE `vol` (
   `id` int(11) NOT NULL,
   `num_vol` varchar(255) NOT NULL,
   `nb_place` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
+  `type_class` int(11) NOT NULL,
   `ville_dep` varchar(255) NOT NULL,
   `ville_arr` varchar(255) NOT NULL,
   `dep_time` text NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `vol` (
 -- Contenu de la table `vol`
 --
 
-INSERT INTO `vol` (`id`, `num_vol`, `nb_place`, `type`, `ville_dep`, `ville_arr`, `dep_time`, `vol_duration`, `comp_name`, `price`) VALUES
+INSERT INTO `vol` (`id`, `num_vol`, `nb_place`, `type_class`, `ville_dep`, `ville_arr`, `dep_time`, `vol_duration`, `comp_name`, `price`) VALUES
 (1, '1937', 200, 2, 'Casablanca', 'Montreal', '17h00', '7h30', 'ram.png', 700),
 (2, '209', 210, 2, 'Montreal', 'Casablanca', '16h10', '6h50', 'aircad.png', 600),
 (3, '7850', 220, 2, 'Paris', 'New York', '9h20', '6h20', 'airfr.png', 578),
