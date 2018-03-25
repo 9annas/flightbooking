@@ -50,7 +50,7 @@ $vld = array(
        ),
 );
 
-$vld[VAL_DATE][K_VALUE] = $_POST['date_dep'];
+
 
 //Are we in post?
 $in_post = ('POST' === $_SERVER['REQUEST_METHOD']);
@@ -58,16 +58,16 @@ $in_post = ('POST' === $_SERVER['REQUEST_METHOD']);
 if($in_post){
     //Validate the inputs
     //SELECT_FROM : value must be different to -1
-    $vld[SELECT_FROM][K_IS_VALID] = !filter_input(INPUT_POST, SELECT_FROM, FILTER_VALIDATE_FLOAT);
+    $vld[SELECT_FROM][K_IS_VALID] = !filter_input(INPUT_POST, 'opt_city_from', FILTER_VALIDATE_FLOAT);
 
     //SELECT_TO: value must be different to -1
-    $vld[SELECT_TO][K_IS_VALID] = !filter_input(INPUT_POST, SELECT_TO, FILTER_VALIDATE_FLOAT);
+    $vld[SELECT_TO][K_IS_VALID] = !filter_input(INPUT_POST, 'opt_city_to', FILTER_VALIDATE_FLOAT);
 
     //VAL_DATE: input must be minimum from today
     $vld[VAL_DATE][K_IS_VALID] = $vld[VAL_DATE][K_VALUE] >= $today;
 
     //VAL_CLASS: user must select one class
-    $vld[VAL_CLASS][K_IS_VALID] = array_key_exists(VAL_CLASS, $_POST);
+    $vld[VAL_CLASS][K_IS_VALID] = array_key_exists('class', $_POST);
 
     // Verify the whole form
     $form_valid = $vld[SELECT_FROM][K_IS_VALID]
@@ -84,7 +84,13 @@ if($in_post){
 
 
 }
+$date = DateTime::createFromFormat('Y-m-d', $_POST['date_dep']);
+
+
 var_dump($_POST['date_dep']);
+var_dump($_POST['class']);
+
+$vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y');
 
 ?>
 <! DOCTYPE html>
@@ -104,6 +110,7 @@ var_dump($_POST['date_dep']);
     <form method="post">
         <fieldset>
             <legend>Flights</legend>
+
             <div class="<?= $in_post && ! $vld[SELECT_FROM][K_IS_VALID] ? 'invalid' : '' ?>">
                 <label for="opt_city_from">From:</label>
                 <select name="opt_city_from" id="opt_city_from">
@@ -136,7 +143,7 @@ var_dump($_POST['date_dep']);
 
             <div class="<?= $in_post && ! $vld[VAL_DATE][K_IS_VALID] ? 'invalid' : '' ?>">
                 <label for="date_dep">Select departure date</label>
-                <input type="date" name="date_dep" id="date_dep" value="<?= array_key_exists('date_dep', $_POST) && $_POST['date_dep'] !== '' ? $_POST['date_dep'] : '' ?>"
+                <input type="date" name="date_dep" id="date_dep" value="<?= array_key_exists('date_dep', $_POST) && $_POST['date_dep'] !== '' ? $vld[VAL_DATE][K_VALUE] : '' ?>"
                 min="<?= $today ?>">
             </div>
 
