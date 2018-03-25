@@ -67,6 +67,27 @@ function check_mail($usermail){
     return true;
 }
 
+function check_login($username,$password){
+    $check = get_users();
+    for($i = 0 ; $i < count($check);$i++){
+        if ($check[$i]['mail'] == $username){
+            return true;
+        }
+    }
+    return false;
+}
+
+function get_flight_id($myid){
+    global $mysqli;
+    $query = 'SELECT * FROM vol WHERE id = "'.$myid.'"';
+    $res = $mysqli->query($query);
+    $resultat = array();
+    while ($flights = $res->fetch_assoc()) {
+        array_push($resultat,$flights);
+    };
+    return $resultat;
+}
+
 function inscription($lastname,$firstname,$mail,$password){
     global $mysqli;
     var_dump($lastname,$firstname,$mail,$password);

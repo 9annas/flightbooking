@@ -1,11 +1,13 @@
 /*********** CSS flight.php *******************/
 *{
     font-family: Arial, sans-serif;
+    list-style-type: none;
 }
 #flight{
     min-width: 550px;
     max-width: 800px;
     margin: auto;
+    margin-top: 2%;
 }
 
 .prix, .details{
@@ -32,6 +34,7 @@
     height: 35px;
 }
 
+
 .prix form input[type='submit']{
     padding: 16px;
     text-decoration: none;
@@ -54,10 +57,4 @@
 .details img{
     width: 100px;
     height: 15px;
-
-
-}
-
-.block{
-    display: block;
 }

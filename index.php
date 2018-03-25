@@ -14,11 +14,9 @@ var_dump($display);
     <h1></h1>
 </header>
 <main>
-    <a href="flights.php">flights</a>
-    <a href="inscription.php">inscription</a>
     <a href="login.php">login</a>
-<!--    <a href="flights.php">flights</a>-->
-
+    <a href="inscription.php">inscription</a>
+    <a href="flights.php">flights</a>
 </main>
 </body>
 </html>

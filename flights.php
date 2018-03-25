@@ -2,6 +2,7 @@
 require_once ('db/connection.php');
 $display = get_flights();
 //var_dump($display);
+var_dump($_POST);
 ?>
 <! DOCTYPE html>
 <html>
@@ -16,24 +17,26 @@ $display = get_flights();
     <h1></h1>
 </header>
 <main>
-    <ul>
+    <!--<ul>
         <li><div>
-                <?php
-                for($i = 0 ; $i < count($display);$i++){
-                    echo '<li><div>'.$display[$i]['num_vol'].$display[$i]['nb_place_eco'].$display[$i]['nb_place_first'].$display[$i]['ville_dep'].$display[$i]['ville_arr'].$display[$i]['ville_arr'].$display[$i]['vol_duration'].$display[$i]['comp_name'].'</div></li>';
-                }
-                ?>
-            </div></li>
-    </ul>
+<!--                --><?php
+//                for($i = 0 ; $i < count($display);$i++){
+//                    echo '<li><div>'.$display[$i]['num_vol'].$display[$i]['nb_place_eco'].$display[$i]['nb_place_first'].$display[$i]['ville_dep'].$display[$i]['ville_arr'].$display[$i]['ville_arr'].$display[$i]['vol_duration'].$display[$i]['comp_name'].'</div></li>';
+//                }
+//                ?>
+            <!--</div></li>
+    </ul>-->
 
         <ul>
+            <?php for ($i = 0 ; $i < count($display) ; $i++){?>
             <li>
                 <div id="flight">
                     <div class="prix">
-                        <span>999.99$</span>
-                        <form method="post">
-                            <label for="number">Number of tickets: </label>
-                            <input id="number" name="number" type="number" min="1">
+                        <span> <?= $display[$i]['price']?>$</span>
+                        <form method="post" name="selected_flight">
+                            <input type="hidden" name="myflight" value="<?=$display[$i]['id']?>">
+                            <label for="number">Number of tickets: <?= $display[$i]['nb_place_eco']?></label>
+<!--                            <input id="number" name="number" type="number" min="1">-->
                             <input type="submit" value="SELECT"></>
                         </form>
 
@@ -43,9 +46,9 @@ $display = get_flights();
 
                         <div>
                             <span class="block">Departs :</span>
-                            <strong>11:00 AM</strong>
+                            <strong><?= $display[$i]['dep_time']?></strong>
                             <span> Fri Mar 23</span>
-                            <span class="block">Montréal</span>
+                            <span class="block"><?= $display[$i]['ville_dep']?></span>
                         </div>
 
                         <div>
@@ -56,7 +59,7 @@ $display = get_flights();
                             <span class="block">Arrives :</span>
                             <strong>8:00 PM</strong>
                             <span> Sun Aug 20</span>
-                            <span class="block">Dubai</span>
+                            <span class="block"><?= $display[$i]['ville_arr']?></span>
                         </div>
 
                         <div>
@@ -67,9 +70,15 @@ $display = get_flights();
 
                 </div>
             </li>
+            <?php } ?>
         </ul>
-
-
+        <aside>
+            <div id="side">
+                <div class="myarticles">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </aside>
     </div>
 </main>
 </body>
