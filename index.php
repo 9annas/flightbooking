@@ -2,7 +2,7 @@
 require_once ('db/connection.php');
 $display = get_flights();
 //var_dump($display);
-var_dump($_POST);
+//var_dump($_POST);
 
 $today = date('d-m-Y');
 
@@ -31,22 +31,22 @@ $vld = array(
        SELECT_FROM => array(
            K_IS_VALID => false,
            K_VALUE => null,
-           K_ERR_MSG => 'Please select a city'
+           K_ERR_MSG => 'Please select a city.'
        ),
        SELECT_TO => array(
            K_IS_VALID => false,
            K_VALUE => null,
-           K_ERR_MSG => 'Please select a city'
+           K_ERR_MSG => 'Please select a city.'
        ),
        VAL_DATE => array(
            K_IS_VALID => false,
            K_VALUE => null,
-           K_ERR_MSG => 'Please select a date of departure'
+           K_ERR_MSG => 'Please select a valid date.'
        ),
        VAL_CLASS => array(
            K_IS_VALID => false,
            K_VALUE => null,
-           K_ERR_MSG => 'Please select a class'
+           K_ERR_MSG => 'Please select a class.'
        ),
 );
 
@@ -82,15 +82,18 @@ if($in_post){
 
 
 
+    $date = DateTime::createFromFormat('Y-m-d', $_POST['date_dep']);
 
+
+    //var_dump($_POST['date_dep']);
+    //var_dump($_POST['class']);
+
+    $vld[SELECT_FROM][K_VALUE] = $_POST['opt_city_to'];
+    $vld[SELECT_TO][K_VALUE] = $_POST['opt_city_to'];
+    //$vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y'); //Contains an error
+    $vld[VAL_CLASS][K_VALUE] = $_POST['class'];
 }
-$date = DateTime::createFromFormat('Y-m-d', $_POST['date_dep']);
 
-
-var_dump($_POST['date_dep']);
-var_dump($_POST['class']);
-
-$vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y');
 
 ?>
 <! DOCTYPE html>
@@ -98,6 +101,7 @@ $vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y');
 <head>
     <meta charset="UTF-8">
     <title>TP</title>
+    <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
 <header>
@@ -107,11 +111,16 @@ $vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y');
     <a href="flights.php">flights</a>
 </header>
 <main>
-    <form method="post">
+    <a href="<?= $_SERVER['PHP_SELF'] ?>">retour au GET</a>
+    <form method="post" id="formIndex">
         <fieldset>
             <legend>Flights</legend>
-
             <div class="<?= $in_post && ! $vld[SELECT_FROM][K_IS_VALID] ? 'invalid' : '' ?>">
+                <?php
+                if ($in_post && ! $vld[SELECT_FROM][K_IS_VALID] ) {
+                    echo '<p>', $vld[SELECT_FROM][K_ERR_MSG] ,'</p>';
+                }
+                ?>
                 <label for="opt_city_from">From:</label>
                 <select name="opt_city_from" id="opt_city_from">
                     <option value="-1" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='-1' ? ATTR_SELECTED : '' ?>>select city...</option>
@@ -127,6 +136,11 @@ $vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y');
             </div>
 
             <div class="<?= $in_post && ! $vld[SELECT_TO][K_IS_VALID] ? 'invalid' : '' ?>">
+                <?php
+                if ($in_post && ! $vld[SELECT_TO][K_IS_VALID] ) {
+                    echo '<p>', $vld[SELECT_TO][K_ERR_MSG] ,'</p>';
+                }
+                ?>
                 <label for="opt_city_to">To:</label>
                 <select name="opt_city_to" id="opt_city_to">
                     <option value="-1" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='-1' ? ATTR_SELECTED : '' ?>>select city...</option>
@@ -142,12 +156,22 @@ $vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y');
             </div>
 
             <div class="<?= $in_post && ! $vld[VAL_DATE][K_IS_VALID] ? 'invalid' : '' ?>">
+                <?php
+                if ($in_post && ! $vld[VAL_DATE][K_IS_VALID] ) {
+                    echo '<p>', $vld[VAL_DATE][K_ERR_MSG] ,'</p>';
+                }
+                ?>
                 <label for="date_dep">Select departure date</label>
                 <input type="date" name="date_dep" id="date_dep" value="<?= array_key_exists('date_dep', $_POST) && $_POST['date_dep'] !== '' ? $vld[VAL_DATE][K_VALUE] : '' ?>"
                 min="<?= $today ?>">
             </div>
 
             <div class="<?= $in_post && ! $vld[VAL_CLASS][K_IS_VALID] ? 'invalid' : '' ?>">
+                <?php
+                if ($in_post && ! $vld[VAL_CLASS][K_IS_VALID] ) {
+                    echo '<p>', $vld[VAL_CLASS][K_ERR_MSG] ,'</p>';
+                }
+                ?>
                 <span>Class:</span>
                 <div>
                     <label for="economy">Economy</label>
