@@ -3,7 +3,7 @@ require_once ('db/connection.php');
 $display = get_flights();
 //var_dump($display);
 $mydate = date("Y-m-d H");
-if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST)){
+if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1){
     header('Location:index.php');
 }
 // || $_POST["date_dep"] < $mydate
