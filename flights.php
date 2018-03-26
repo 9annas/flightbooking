@@ -2,7 +2,12 @@
 require_once ('db/connection.php');
 $display = get_flights();
 //var_dump($display);
-if($_POST)
+$mydate = date("Y-m-d");
+if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1 || strtotime($_POST["date_dep"]) < strtotime($mydate)){
+    header('Location:index.php');
+}
+var_dump($mydate);
+// || $_POST["date_dep"] < $mydate
 var_dump($_POST);
 ?>
 <! DOCTYPE html>
@@ -26,7 +31,7 @@ var_dump($_POST);
                         <span> <?= $display[$i]['price']?>$</span>
                         <form method="post" name="selected_flight">
                             <input type="hidden" name="myflight" value="<?=$display[$i]['id']?>">
-                            <input type="hidden" name="myflight" value="<?=$_POST['date_dep']?>">
+                            <input type="hidden" name="myflight" value="<?php if(array_key_exists('date_dep', $_POST)){echo  '$_POST["date_dep"]';} ?>">
                             <label for="number">Number of tickets: <?= $display[$i]['nb_place']?></label>
 <!--                            <input id="number" name="number" type="number" min="1">-->
                             <input type="submit" value="SELECT"></>
@@ -54,7 +59,7 @@ var_dump($_POST);
                         </div>
 
                         <div>
-                            <span>Economy</span>
+                            <span><?php if ($display[$i]['type_class'] == 1){ echo 'First Class';}elseif($display[$i]['type_class'] == 2){echo 'Economy';}else{echo 'Business';} ?></span>
                         </div>
 
                     </div>
