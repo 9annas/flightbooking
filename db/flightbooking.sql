@@ -101,7 +101,7 @@ INSERT INTO `vol` (`id`, `num_vol`, `nb_place`, `type_class`, `ville_dep`, `vill
 (7, '720', 320, 2, 'Johannesburg', 'Marrakech', '20h10', '6h50', 'ram.png', 784),
 (8, '1080', 270, 2, 'Tokyo', 'Vencouver', '10h00', '8h40', 'emirates.png', 987),
 (10, '5484', 50, 1, 'Casablanca', 'Montreal', '17h00', '7h30', 'ram.png', 1000),
-(11, '4548', 60, 1, 'Montreal', 'Casablanca', '16h10', '6h50', 'aricad.png', 980),
+(11, '4548', 60, 1, 'Montreal', 'Casablanca', '16h10', '6h50', 'aircad.png', 980),
 (14, '217', 55, 1, 'Paris', 'New York', '9h20', '6h20', 'airfr.png', 890),
 (15, '324', 60, 1, 'New York', 'Paris', '18h30', '7h10', 'unair.png', 1200),
 (17, '545', 70, 1, 'Vancoucer', 'Tokyo', '19h10', '8h20', 'japanair.png', 1700),
