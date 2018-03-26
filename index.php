@@ -4,7 +4,6 @@ $display = get_flights();
 //var_dump($display);
 //var_dump($_POST);
 
-
 $today = date('d-m-Y');
 
 
@@ -94,7 +93,7 @@ if($in_post){
     //$vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y'); //Contains an error
     //$vld[VAL_CLASS][K_VALUE] = $_POST['class'];
 }
-//var_dump($in_post);
+
 
 ?>
 <! DOCTYPE html>
@@ -182,15 +181,15 @@ if($in_post){
                 ?>
                 <span class="block">Class:</span>
                 <div class="inline">
-                    <input class="w3-radio" type="radio" id="economy" name="class" value="economy" <?= array_key_exists('class', $_POST) && $_POST['class'] === 'economy' ? ATTR_CHECKED : '' ?>>
+                    <input class="w3-radio" type="radio" id="economy" name="class" value="2" <?= array_key_exists('class', $_POST) && $_POST['class'] === 'economy' ? ATTR_CHECKED : '' ?>>
                     <label for="economy">Economy</label>
                 </div>
                 <div class="inline">
-                    <input class="w3-radio" type="radio" id="firstClass" name="class" value="firstClass" <?= array_key_exists('class', $_POST) && $_POST['class'] === 'firstClass' ? ATTR_CHECKED : '' ?>>
+                    <input class="w3-radio" type="radio" id="firstClass" name="class" value="1" <?= array_key_exists('class', $_POST) && $_POST['class'] === 'firstClass' ? ATTR_CHECKED : '' ?>>
                     <label for="firstClass">First Class</label>
                 </div>
                 <div class="inline">
-                    <input class="w3-radio" type="radio" id="business" name="class" value="business" <?= array_key_exists('class', $_POST) && $_POST['class'] === 'business' ? ATTR_CHECKED : '' ?>>
+                    <input class="w3-radio" type="radio" id="business" name="class" value="3" <?= array_key_exists('class', $_POST) && $_POST['class'] === 'business' ? ATTR_CHECKED : '' ?>>
                     <label for="business">Business</label>
                 </div>
             </div>
