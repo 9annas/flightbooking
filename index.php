@@ -4,6 +4,7 @@ $display = get_flights();
 //var_dump($display);
 //var_dump($_POST);
 
+
 $today = date('d-m-Y');
 
 
@@ -38,11 +39,11 @@ $vld = array(
            K_VALUE => null,
            K_ERR_MSG => 'Please select a city.'
        ),
-       VAL_DATE => array(
+       /*VAL_DATE => array(
            K_IS_VALID => false,
            K_VALUE => null,
            K_ERR_MSG => 'Please select a valid date.'
-       ),
+       ),*/
        VAL_CLASS => array(
            K_IS_VALID => false,
            K_VALUE => null,
@@ -64,7 +65,7 @@ if($in_post){
     $vld[SELECT_TO][K_IS_VALID] = !filter_input(INPUT_POST, 'opt_city_to', FILTER_VALIDATE_FLOAT);
 
     //VAL_DATE: input must be minimum from today
-    $vld[VAL_DATE][K_IS_VALID] = $vld[VAL_DATE][K_VALUE] >= $today;
+    //$vld[VAL_DATE][K_IS_VALID] = $vld[VAL_DATE][K_VALUE] >= $today;
 
     //VAL_CLASS: user must select one class
     $vld[VAL_CLASS][K_IS_VALID] = array_key_exists('class', $_POST);
@@ -72,7 +73,7 @@ if($in_post){
     // Verify the whole form
     $form_valid = $vld[SELECT_FROM][K_IS_VALID]
         && $vld[SELECT_TO][K_IS_VALID]
-        && $vld[VAL_DATE][K_IS_VALID]
+        //&& $vld[VAL_DATE][K_IS_VALID]
         && $vld[VAL_CLASS][K_IS_VALID];
     if ($form_valid) {
         // Redirect user to flights.php when form is valid
@@ -93,7 +94,7 @@ if($in_post){
     //$vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y'); //Contains an error
     //$vld[VAL_CLASS][K_VALUE] = $_POST['class'];
 }
-var_dump($in_post);
+//var_dump($in_post);
 
 ?>
 <! DOCTYPE html>
@@ -105,7 +106,7 @@ var_dump($in_post);
     <link rel="stylesheet" href="style/main.css">
     <script src="script/jquery-3.3.1.min.js"></script>
 </head>
-<body>
+<body class="bg">
 <header>
     <img src="images/kappaflight.png" alt="company logo">
     <nav>
@@ -118,10 +119,10 @@ var_dump($in_post);
 <main>
     <h1>Get your tickets today!</h1>
     <a href="<?= $_SERVER['PHP_SELF'] ?>">retour au GET</a>
-    <form method="post" id="formIndex">
+    <form method="post" id="formIndex" action="flights.php">
         <fieldset>
             <legend>Flights</legend>
-            <div class="<?= $in_post && ! $vld[SELECT_FROM][K_IS_VALID] ? 'invalid' : '' ?>">
+            <div class="inline <?= $in_post && ! $vld[SELECT_FROM][K_IS_VALID] ? 'invalid' : '' ?>">
                 <?php
                 if ($in_post && ! $vld[SELECT_FROM][K_IS_VALID] ) {
                     echo '<p>', $vld[SELECT_FROM][K_ERR_MSG] ,'</p>';
@@ -141,7 +142,7 @@ var_dump($in_post);
                 </select>
             </div>
 
-            <div class="<?= $in_post && ! $vld[SELECT_TO][K_IS_VALID] ? 'invalid' : '' ?>">
+            <div class="inline <?= $in_post && ! $vld[SELECT_TO][K_IS_VALID] ? 'invalid' : '' ?>">
                 <?php
                 if ($in_post && ! $vld[SELECT_TO][K_IS_VALID] ) {
                     echo '<p>', $vld[SELECT_TO][K_ERR_MSG] ,'</p>';
@@ -162,11 +163,11 @@ var_dump($in_post);
             </div>
 
 
-            <div class="<?= $in_post && ! $vld[VAL_DATE][K_IS_VALID] ? 'invalid' : '' ?>">
+            <div>
                 <?php
-                if ($in_post && ! $vld[VAL_DATE][K_IS_VALID] ) {
+                /*if ($in_post && ! $vld[VAL_DATE][K_IS_VALID] ) {
                     echo '<p>', $vld[VAL_DATE][K_ERR_MSG] ,'</p>';
-                }
+                }*/
                 ?>
                 <label for="date_dep">Select departure date: </label>
                 <input type="date" name="date_dep" id="date_dep" value="<?= array_key_exists('date_dep', $_POST) && $_POST['date_dep'] !== '' ? $vld[VAL_DATE][K_VALUE] : '' ?>"

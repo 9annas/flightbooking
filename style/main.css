@@ -3,11 +3,11 @@
     list-style-type: none;
 }
 
-body{
+.bg{
     margin: 0;
     background-image: url("../images/arena.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover, contain;
 }
 
 .block{
