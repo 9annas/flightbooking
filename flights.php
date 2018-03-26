@@ -2,10 +2,11 @@
 require_once ('db/connection.php');
 $display = get_flights();
 //var_dump($display);
-$mydate = date("Y-m-d H");
-if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1){
+$mydate = date("Y-m-d");
+if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1 || strtotime($_POST["date_dep"]) < strtotime($mydate)){
     header('Location:index.php');
 }
+var_dump($mydate);
 // || $_POST["date_dep"] < $mydate
 var_dump($_POST);
 ?>
