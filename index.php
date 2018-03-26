@@ -118,7 +118,7 @@ var_dump($in_post);
 <main>
     <h1>Get your tickets today!</h1>
     <a href="<?= $_SERVER['PHP_SELF'] ?>">retour au GET</a>
-    <form method="post" id="formIndex">
+    <form method="post" id="formIndex" action="flights.php">
         <fieldset>
             <legend>Flights</legend>
             <div class="<?= $in_post && ! $vld[SELECT_FROM][K_IS_VALID] ? 'invalid' : '' ?>">
