@@ -93,7 +93,7 @@ if($in_post){
     //$vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y'); //Contains an error
     //$vld[VAL_CLASS][K_VALUE] = $_POST['class'];
 }
-
+var_dump($in_post);
 
 ?>
 <! DOCTYPE html>
@@ -103,6 +103,7 @@ if($in_post){
     <title>TP</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="style/main.css">
+    <script src="script/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <header>
@@ -119,47 +120,45 @@ if($in_post){
     <a href="<?= $_SERVER['PHP_SELF'] ?>">retour au GET</a>
     <form method="post" id="formIndex">
         <fieldset>
-            <legend></legend>
-            <div class="divSelect">
-                <div class="inline <?= $in_post && ! $vld[SELECT_FROM][K_IS_VALID] ? 'invalid' : '' ?>">
-                    <?php
-                    if ($in_post && ! $vld[SELECT_FROM][K_IS_VALID] ) {
-                        echo '<p>', $vld[SELECT_FROM][K_ERR_MSG] ,'</p>';
-                    }
-                    ?>
-                    <label for="opt_city_from">From:</label>
-                    <select name="opt_city_from" id="opt_city_from">
-                        <option value="-1" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='-1' ? ATTR_SELECTED : '' ?>>select city...</option>
-                        <option value="montreal" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='montreal' ? ATTR_SELECTED : '' ?>>Montreal</option>
-                        <option value="ny" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='ny' ? ATTR_SELECTED : '' ?>>New York</option>
-                        <option value="paris" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='paris' ? ATTR_SELECTED : '' ?>>Paris</option>
-                        <option value="tokyo" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='tokyo' ? ATTR_SELECTED : '' ?>>Tokyo</option>
-                        <option value="jb" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='jb' ? ATTR_SELECTED : '' ?>>Johannesburg</option>
-                        <option value="casa" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='casa' ? ATTR_SELECTED : '' ?>>Casablanca</option>
-                        <option value="marra" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='marra' ? ATTR_SELECTED : '' ?>>Marrakech</option>
-                        <option value="venc" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='venc' ? ATTR_SELECTED : '' ?>>Vencouver</option>
-                    </select>
-                </div>
+            <legend>Flights</legend>
+            <div class="<?= $in_post && ! $vld[SELECT_FROM][K_IS_VALID] ? 'invalid' : '' ?>">
+                <?php
+                if ($in_post && ! $vld[SELECT_FROM][K_IS_VALID] ) {
+                    echo '<p>', $vld[SELECT_FROM][K_ERR_MSG] ,'</p>';
+                }
+                ?>
+                <label for="opt_city_from">From:</label>
+                <select name="opt_city_from" id="opt_city_from">
+                    <option value="-1" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='-1' ? ATTR_SELECTED : '' ?>>select city...</option>
+                    <option value="Montreal" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='montreal' ? ATTR_SELECTED : '' ?>>Montreal</option>
+                    <option value="New York" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='ny' ? ATTR_SELECTED : '' ?>>New York</option>
+                    <option value="Paris" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='paris' ? ATTR_SELECTED : '' ?>>Paris</option>
+                    <option value="Tokyo" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='tokyo' ? ATTR_SELECTED : '' ?>>Tokyo</option>
+                    <option value="Johannesburg" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='jb' ? ATTR_SELECTED : '' ?>>Johannesburg</option>
+                    <option value="Casablanca" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='casa' ? ATTR_SELECTED : '' ?>>Casablanca</option>
+                    <option value="Marrakech" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='marra' ? ATTR_SELECTED : '' ?>>Marrakech</option>
+                    <option value="Vancouver" <?= array_key_exists('opt_city_from', $_POST) && $_POST['opt_city_from'] ==='venc' ? ATTR_SELECTED : '' ?>>Vencouver</option>
+                </select>
+            </div>
 
-                <div class="inline <?= $in_post && ! $vld[SELECT_TO][K_IS_VALID] ? 'invalid' : '' ?>">
-                    <?php
-                    if ($in_post && ! $vld[SELECT_TO][K_IS_VALID] ) {
-                        echo '<p>', $vld[SELECT_TO][K_ERR_MSG] ,'</p>';
-                    }
-                    ?>
-                    <label for="opt_city_to">To:</label>
-                    <select name="opt_city_to" id="opt_city_to">
-                        <option value="-1" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='-1' ? ATTR_SELECTED : '' ?>>select city...</option>
-                        <option value="montreal" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='montreal' ? ATTR_SELECTED : '' ?>>Montreal</option>
-                        <option value="ny" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='ny' ? ATTR_SELECTED : '' ?>>New York</option>
-                        <option value="paris" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='paris' ? ATTR_SELECTED : '' ?>>Paris</option>
-                        <option value="tokyo" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='tokyo' ? ATTR_SELECTED : '' ?>>Tokyo</option>
-                        <option value="jb" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='jb' ? ATTR_SELECTED : '' ?>>Johannesburg</option>
-                        <option value="casa" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='casa' ? ATTR_SELECTED : '' ?>>Casablanca</option>
-                        <option value="marra" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='marra' ? ATTR_SELECTED : '' ?>>Marrakech</option>
-                        <option value="venc" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='venc' ? ATTR_SELECTED : '' ?>>Vencouver</option>
-                    </select>
-                </div>
+            <div class="<?= $in_post && ! $vld[SELECT_TO][K_IS_VALID] ? 'invalid' : '' ?>">
+                <?php
+                if ($in_post && ! $vld[SELECT_TO][K_IS_VALID] ) {
+                    echo '<p>', $vld[SELECT_TO][K_ERR_MSG] ,'</p>';
+                }
+                ?>
+                <label for="opt_city_to">To:</label>
+                <select name="opt_city_to" id="opt_city_to">
+                    <option value="-1" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='-1' ? ATTR_SELECTED : '' ?>>select city...</option>
+                    <option value="Montreal" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='montreal' ? ATTR_SELECTED : '' ?>>Montreal</option>
+                    <option value="New York" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='ny' ? ATTR_SELECTED : '' ?>>New York</option>
+                    <option value="Paris" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='paris' ? ATTR_SELECTED : '' ?>>Paris</option>
+                    <option value="Tokyo" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='tokyo' ? ATTR_SELECTED : '' ?>>Tokyo</option>
+                    <option value="Johannesburg" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='jb' ? ATTR_SELECTED : '' ?>>Johannesburg</option>
+                    <option value="Casablanca" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='casa' ? ATTR_SELECTED : '' ?>>Casablanca</option>
+                    <option value="Marrakech" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='marra' ? ATTR_SELECTED : '' ?>>Marrakech</option>
+                    <option value="Vancouver" <?= array_key_exists('opt_city_to', $_POST) && $_POST['opt_city_to'] ==='venc' ? ATTR_SELECTED : '' ?>>Vencouver</option>
+                </select>
             </div>
 
 

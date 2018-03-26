@@ -2,6 +2,7 @@
 require_once ('db/connection.php');
 $display = get_flights();
 //var_dump($display);
+if($_POST)
 var_dump($_POST);
 ?>
 <! DOCTYPE html>
@@ -17,16 +18,6 @@ var_dump($_POST);
     <h1></h1>
 </header>
 <main>
-    <!--<ul>
-        <li><div>
-<!--                --><?php
-//                for($i = 0 ; $i < count($display);$i++){
-//                    echo '<li><div>'.$display[$i]['num_vol'].$display[$i]['nb_place_eco'].$display[$i]['nb_place_first'].$display[$i]['ville_dep'].$display[$i]['ville_arr'].$display[$i]['ville_arr'].$display[$i]['vol_duration'].$display[$i]['comp_name'].'</div></li>';
-//                }
-//                ?>
-            <!--</div></li>
-    </ul>-->
-
         <ul>
             <?php for ($i = 0 ; $i < count($display) ; $i++){?>
             <li>
@@ -35,6 +26,7 @@ var_dump($_POST);
                         <span> <?= $display[$i]['price']?>$</span>
                         <form method="post" name="selected_flight">
                             <input type="hidden" name="myflight" value="<?=$display[$i]['id']?>">
+                            <input type="hidden" name="myflight" value="<?=$_POST['date_dep']?>">
                             <label for="number">Number of tickets: <?= $display[$i]['nb_place']?></label>
 <!--                            <input id="number" name="number" type="number" min="1">-->
                             <input type="submit" value="SELECT"></>
@@ -47,7 +39,7 @@ var_dump($_POST);
                         <div>
                             <span class="block">Departs :</span>
                             <strong><?= $display[$i]['dep_time']?></strong>
-                            <span> Fri Mar 23</span>
+                            <span> <?=$_POST['date_dep']?> </span>
                             <span class="block"><?= $display[$i]['ville_dep']?></span>
                         </div>
 
@@ -58,7 +50,6 @@ var_dump($_POST);
                         <div>
                             <span class="block">Arrives :</span>
                             <strong>8:00 PM</strong>
-                            <span> Sun Aug 20</span>
                             <span class="block"><?= $display[$i]['ville_arr']?></span>
                         </div>
 
