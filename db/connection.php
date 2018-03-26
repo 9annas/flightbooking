@@ -17,25 +17,7 @@ if ($mysqli->connect_errno) {
  * @param bool $cat_id
  * @return array
  */
-//function get_article_list($cat_id=false) {
-//    global $mysqli;
-//// Sélectionner tous les articles (toutes les colonnes)
-//    $queryStr = 'SELECT * FROM article';
-//    // Si la catégorie est précisée, on ajoute une clause WHERE dans la requête
-//    if (false !== $cat_id) {
-//        $queryStr .= " WHERE `category_id` = " . $mysqli->real_escape_string($cat_id);
-//    }
-//// Execution de la requête (un select)
-//    $res = $mysqli->query($queryStr);
-//// Récupération des données
-//    $resultat = array();
-//    if ($res && ($res->num_rows > 0)) {
-//        while ($article = $res->fetch_assoc()) {
-//            $resultat[$article['id']] = $article;
-//        };
-//    };
-//    return $resultat;
-//}
+
 function get_flights(){
     global $mysqli;
     $query = 'SELECT * FROM vol';

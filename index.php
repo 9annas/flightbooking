@@ -1,8 +1,12 @@
 <?php
 require_once ('db/connection.php');
+if(!isset($_SESSION)){
+    session_start();
+}
+var_dump($_SESSION);
 $display = get_flights();
 //var_dump($display);
-var_dump($_POST);
+//var_dump($_POST);
 
 $today = date('d-m-Y');
 
@@ -93,7 +97,7 @@ if($in_post){
     //$vld[VAL_DATE][K_VALUE] =$date->format('d-m-Y'); //Contains an error
     $vld[VAL_CLASS][K_VALUE] = $_POST['class'];
 
-    var_dump($vld[VAL_CLASS][K_VALUE]);
+//    var_dump($vld[VAL_CLASS][K_VALUE]);
 }
 
 

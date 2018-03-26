@@ -1,28 +1,34 @@
 <?php
 require_once ('db/connection.php');
-
-
+if(!isset($_SESSION)){
+    session_start();
+}
+$display=get_flights();
 //var_dump($display);
 $mydate = date("Y-m-d");
-if (!array_key_exists("classes",$_POST)){
-    if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1 || strtotime($_POST["date_dep"]) < strtotime($mydate)){
-        header('Location:index.php');
+if (!array_key_exists("monpannier",$_POST)){
+    if (!array_key_exists("classes",$_POST)){
+        if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1 || strtotime($_POST["date_dep"]) < strtotime($mydate)){
+            header('Location:index.php');
+        }else{
+            $display = research_filter($_POST['opt_city_from'],$_POST['opt_city_to'],$_POST['class']);
+        }
     }else{
-        $display = research_filter($_POST['opt_city_from'],$_POST['opt_city_to'],$_POST['class']);
-    }
-}else{
-    if ($_POST['classes'] == 5){
-        $display=get_flights();
-    }else{
-        $display = flights_by_class($_POST['classes']);
+        if ($_POST['classes'] == 5){
+            $display=get_flights();
+        }else{
+            $display = flights_by_class($_POST['classes']);
+        }
     }
 
 }
 
+
+
 //var_dump($display);
 //var_dump($mydate);
 // || $_POST["date_dep"] < $mydate
-//var_dump($_POST);
+var_dump($_POST);
 ?>
 <! DOCTYPE html>
 <html>
@@ -51,9 +57,9 @@ if (!array_key_exists("classes",$_POST)){
                 <div id="flight">
                     <div class="prix">
                         <span> <?= $display[$i]['price']?>$</span>
-                        <form method="post" name="selected_flight">
-                            <input type="hidden" name="myflight" value="<?=$display[$i]['id']?>">
-                            <input type="hidden" name="myflight" value="<?php if(array_key_exists('date_dep', $_POST)){echo  '$_POST["date_dep"]';} ?>">
+                        <form method="post" name="selected_flight" action="flightbooking.php">
+                            <input type="hidden" name="flight_id" value="<?=$display[$i]['id']?>">
+                            <input type="hidden" name="flight_date" value="<?= (array_key_exists('date_dep', $_POST)) ? $_POST["date_dep"] : "" ?>">
                             <label for="number">Number of tickets: <?= $display[$i]['nb_place']?></label>
 <!--                            <input id="number" name="number" type="number" min="1">-->
                             <input type="submit" value="SELECT"></>
@@ -61,12 +67,12 @@ if (!array_key_exists("classes",$_POST)){
 
                     </div>
                     <div class="details">
-                        <img src="images/delta_logo.png" alt="image compagnie">
+                        <img src="images/<?= $display[$i]['comp_name'] ?>" alt="image compagnie">
 
                         <div>
                             <span class="block">Departs :</span>
                             <strong><?= $display[$i]['dep_time']?></strong>
-                            <span> <?=(array_key_exists('date_dep',$_POST)) ? '$_POST["date_dep"]' : ""?> </span>
+                            <span> <?=(array_key_exists('date_dep',$_POST)) ? $_POST["date_dep"] : ""?> </span>
                             <span class="block"><?= $display[$i]['ville_dep']?></span>
                         </div>
 
