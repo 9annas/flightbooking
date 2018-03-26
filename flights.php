@@ -1,20 +1,28 @@
 <?php
 require_once ('db/connection.php');
-$display = research_filter($_POST['opt_city_from'],$_POST['opt_city_to'],$_POST['class']);
-$diplayeco = '';
-$displayfirst = '';
-$displaybusiness = '';
-$displayall=get_flights();
+
 
 //var_dump($display);
 $mydate = date("Y-m-d");
-if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1 || strtotime($_POST["date_dep"]) < strtotime($mydate)){
-    header('Location:index.php');
+if (!array_key_exists("classes",$_POST)){
+    if(!array_key_exists("date_dep",$_POST) || !array_key_exists("class",$_POST) || $_POST['opt_city_from']==-1 || $_POST['opt_city_to']==-1 || strtotime($_POST["date_dep"]) < strtotime($mydate)){
+        header('Location:index.php');
+    }else{
+        $display = research_filter($_POST['opt_city_from'],$_POST['opt_city_to'],$_POST['class']);
+    }
+}else{
+    if ($_POST['classes'] == 5){
+        $display=get_flights();
+    }else{
+        $display = flights_by_class($_POST['classes']);
+    }
+
 }
-var_dump($display);
-var_dump($mydate);
+
+//var_dump($display);
+//var_dump($mydate);
 // || $_POST["date_dep"] < $mydate
-var_dump($_POST);
+//var_dump($_POST);
 ?>
 <! DOCTYPE html>
 <html>
@@ -29,7 +37,15 @@ var_dump($_POST);
     <h1></h1>
 </header>
 <main>
+    <h1 style="text-align: center ; font-size: 5em"   class="myh1"><?= (count($display)==0)? "No Flight available" : "" ?></h1>
         <ul>
+            <form name="myclassdisplayed" method="post">
+                <input type="radio" name="classes" id="all"   value="5"> <label for="all">all types</label>
+                <input type="radio" name="classes" id="eco"   value="2"> <label for="eco">all econnomy</label>
+                <input type="radio" name="classes" id="first" value="1"> <label for="first">all first class</label>
+                <input type="radio" name="classes" id="business" value="3"> <label for="business">all business</label>
+                <input type="submit" value="Show">
+            </form>
             <?php for ($i = 0 ; $i < count($display) ; $i++){?>
             <li>
                 <div id="flight">
@@ -50,7 +66,7 @@ var_dump($_POST);
                         <div>
                             <span class="block">Departs :</span>
                             <strong><?= $display[$i]['dep_time']?></strong>
-                            <span> <?=$_POST['date_dep']?> </span>
+                            <span> <?=(array_key_exists('date_dep',$_POST)) ? '$_POST["date_dep"]' : ""?> </span>
                             <span class="block"><?= $display[$i]['ville_dep']?></span>
                         </div>
 

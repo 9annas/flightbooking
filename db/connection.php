@@ -100,6 +100,18 @@ function research_filter($depp,$arr,$typeclass){
     return $resultat;
 }
 
+function flights_by_class($typeclass){
+    global $mysqli;
+    $query = 'SELECT * FROM vol WHERE type_class = "'.$typeclass.'"' ;
+    $res = $mysqli->query($query);
+    $resultat = array();
+    while ($filters = $res->fetch_assoc()) {
+        array_push($resultat,$filters);
+    };
+    return $resultat;
+}
+
+
 function add_reservation(){
 //    global $mysqli;
 //    $query = '';

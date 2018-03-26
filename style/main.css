@@ -114,6 +114,10 @@ h1{
     color: white;
 }
 
+.myh1{
+    color: orange;
+}
+
 .invalid{
     background-color: #fde2e1;
     border: 1px solid red;
