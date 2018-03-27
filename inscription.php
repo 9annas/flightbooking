@@ -1,5 +1,7 @@
 <?php
 require_once ('db/connection.php');
+$page_title = "Registration";
+require_once ('views/page_top.php');
 $en_post = $_SERVER['REQUEST_METHOD'] === 'POST'; //Indique si on est en réception
 $validation = array(
     'firstname' => array(
@@ -53,8 +55,8 @@ if($en_post){
 
 
 }
-var_dump($validation['pwd']['value']);
-var_dump($_POST);
+//var_dump($validation['pwd']['value']);
+//var_dump($_POST);
 //All form
 $form_valide = $validation['firstname']['is_valid']
     && $validation['lastname']['is_valid']
@@ -73,27 +75,11 @@ if($form_valide && check_mail($validation['email']['value'])=== true ){
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>P62 Formulaires : Réaffichage du select planetes</title>
-    <style>
-        #register{
-            width: 50%;
-            margin: auto;
-        }
-
-        #register div{
-            margin: 5px;
-        }
-
-        #register div label{
-            display: inline-block;
-            width: 30%;
-        }
-    </style>
+    <title>Registration</title>
+    <link rel="stylesheet" href="style/main.css">
 </head>
-<body>
-<header>
+<body class="bg2">
 
-</header>
 <main>
     <form method="post" id="register">
         <h2>Registration</h2>
@@ -148,5 +134,7 @@ if($form_valide && check_mail($validation['email']['value'])=== true ){
         <input type="submit" value="Submit">
     </form>
 </main>
-</body>
-</html>
+
+<?php
+require_once ('views/page_bottom.php');
+?>

@@ -1,9 +1,11 @@
 <?php
 require_once ('db/connection.php');
+$page_title = "Home";
+require_once ('views/page_top.php');
 if(!isset($_SESSION)){
     session_start();
 }
-var_dump($_SESSION);
+//var_dump($_SESSION);
 $display = get_flights();
 //var_dump($display);
 //var_dump($_POST);
@@ -102,25 +104,7 @@ if($in_post){
 
 
 ?>
-<! DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>TP</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="style/main.css">
-    <script src="script/jquery-3.3.1.min.js"></script>
-</head>
-<body class="bg">
-<header>
-    <img src="images/kappaflight.png" alt="company logo">
-    <nav>
-        <a href="login.php">login</a>
-        <a href="inscription.php">inscription</a>
-        <a href="flights.php">flights</a>
-    </nav>
 
-</header>
 <main>
     <h1>Get your tickets today!</h1>
     <a href="<?= $_SERVER['PHP_SELF'] ?>">retour au GET</a>
@@ -202,5 +186,7 @@ if($in_post){
         <input class="button" type="submit" value="Submit">
     </form>
 </main>
-</body>
-</html>
+
+<?php
+require_once ('views/page_bottom.php');
+?>

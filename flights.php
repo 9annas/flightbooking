@@ -1,5 +1,7 @@
 <?php
 require_once ('db/connection.php');
+$page_title = "Flights";
+require_once ('views/page_top.php');
 if(!isset($_SESSION)){
     session_start();
 }
@@ -102,12 +104,14 @@ var_dump($_POST);
         </ul>
         <aside>
             <div id="side">
-                <div class="myarticles">
-                    <img src="" alt="">
-                </div>
+                <figure class="myarticles">
+                    <img src="images/aside_img.jpg" alt="image d'une plage">
+                    <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in nunc odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse ex risus, mollis non sem et, hendrerit mollis mauris. Nullam facilisis mollis neque in mattis. Sed posuere enim dictum dui facilisis, eu molestie magna aliquet. Curabitur ut tempus dolor. Curabitur sit amet elit mi. Morbi vel quam eu tellus ultricies dignissim. Morbi sed mauris ipsum.</figcaption>
+                </figure>
             </div>
         </aside>
-    </div>
 </main>
-</body>
-</html>
+
+<?php
+require_once ('views/page_bottom.php');
+?>

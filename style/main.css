@@ -14,6 +14,12 @@
     display: block;
 }
 
+ul{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -30,7 +36,7 @@ header nav{
     margin-right: 10px;
 }
 
-header nav a{
+header nav a, footer ul li a{
     text-transform: uppercase;
     display: inline-block;
     padding: 10px;
@@ -40,7 +46,7 @@ header nav a{
 
 }
 
-header nav a:hover{
+header nav a:hover, footer ul li a:hover{
     text-decoration: none;
     color: #ffab4f;
 
@@ -48,6 +54,22 @@ header nav a:hover{
 
 main{
     margin-left: 25px;
+}
+
+footer{
+    background-color: #cccccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+footer img{
+    width: 10%;
+}
+
+footer ul li{
+    display: inline-block;
 }
 
 /*********** CSS flight.php *******************/
@@ -109,6 +131,8 @@ main{
     height: 15px;
 }
 
+
+
 /************** index.php CSS ******************/
 h1{
     color: white;
@@ -129,6 +153,7 @@ h1{
     min-width: 420px;
     background-color: rgba(217, 217, 217, 0.8);
     text-align: center;
+    margin-bottom: 248px;
 }
 
 #formIndex fieldset > div, .divSelect div{
@@ -200,8 +225,88 @@ h1{
     text-align: left;
 }
 
+/*************** CSS inscrition.php ************************/
+.bg2{
+    margin: 0;
+    background-image: url("../images/brazil.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h2{
+    text-align:center;
+    font-family: 'Noto Sans', sans-serif;
+}
+legend{
+    font-family: 'Noto Sans', sans-serif;
+    text-align:center;
+}
+#register{
+    margin: 30px;
+    background-color: #ffbabdc7;
+    border-radius: 31px;
+    width: 573px;
+    margin-left: 40px;
+    margin-bottom: 58px;
+}
+
+#register fieldset{
+    margin: 0 auto;
+    width: 95%;
+    border: none;
+}
+
+#register label{
+    margin-left: 12px;
+}
 
 
+#register input[type=text]{
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 12px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#register input[type=password]{
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 12px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#register input[type=submit] {
+    font-family: 'Noto Sans', sans-serif;
+    width: 49%;
+    background-color:#dd0812b5;
+    color: white;
+    padding: 9px 8px;
+    margin: 13px 146px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#register input[type=submit]:hover {
+    background-color: #980007b5;
+}
+
+#register span{
+    display: block;
+    text-align: center;
+    width: 80%;
+    padding: 5px;
+    color: red;
+    border-radius: 5px;
+    background-color: #fbf3f3;
+    margin: 0 auto 10px;
+    border: solid 1px red;
+}
 
 
 
