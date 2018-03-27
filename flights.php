@@ -3,6 +3,10 @@ require_once ('db/connection.php');
 if(!isset($_SESSION)){
     session_start();
 }
+if( array_key_exists("date_dep",$_POST)){
+    $_SESSION['globaldate']= $_POST["date_dep"];
+}
+
 $display=get_flights();
 //var_dump($display);
 $mydate = date("Y-m-d");
@@ -23,7 +27,7 @@ if (!array_key_exists("monpannier",$_POST)){
 
 }
 
-
+var_dump($_SESSION);
 
 //var_dump($display);
 //var_dump($mydate);
@@ -46,7 +50,7 @@ var_dump($_POST);
     <h1 style="text-align: center ; font-size: 5em"   class="myh1"><?= (count($display)==0)? "No Flight available" : "" ?></h1>
         <ul>
             <form name="myclassdisplayed" method="post">
-                <input type="radio" name="classes" id="all"   value="5"> <label for="all">all types</label>
+                <input type="radio" name="classes" id="all"   value="5" > <label for="all">all types</label>
                 <input type="radio" name="classes" id="eco"   value="2"> <label for="eco">all econnomy</label>
                 <input type="radio" name="classes" id="first" value="1"> <label for="first">all first class</label>
                 <input type="radio" name="classes" id="business" value="3"> <label for="business">all business</label>
@@ -59,7 +63,7 @@ var_dump($_POST);
                         <span> <?= $display[$i]['price']?>$</span>
                         <form method="post" name="selected_flight" action="flightbooking.php">
                             <input type="hidden" name="flight_id" value="<?=$display[$i]['id']?>">
-                            <input type="hidden" name="flight_date" value="<?= (array_key_exists('date_dep', $_POST)) ? $_POST["date_dep"] : "" ?>">
+                            <input type="hidden" name="flight_date" value="<?= (array_key_exists('globaldate', $_SESSION)) ? $_SESSION['globaldate'] : "" ?>">
                             <label for="number">Number of tickets: <?= $display[$i]['nb_place']?></label>
 <!--                            <input id="number" name="number" type="number" min="1">-->
                             <input type="submit" value="SELECT"></>
@@ -72,7 +76,7 @@ var_dump($_POST);
                         <div>
                             <span class="block">Departs :</span>
                             <strong><?= $display[$i]['dep_time']?></strong>
-                            <span> <?=(array_key_exists('date_dep',$_POST)) ? $_POST["date_dep"] : ""?> </span>
+                            <span> <?=(array_key_exists('globaldate',$_SESSION))  ? $_SESSION['globaldate'] : 'hello'?> </span>
                             <span class="block"><?= $display[$i]['ville_dep']?></span>
                         </div>
 
