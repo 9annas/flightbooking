@@ -8,7 +8,6 @@ if(!isset($_SESSION)){
 if( array_key_exists("date_dep",$_POST)){
     $_SESSION['globaldate']= $_POST["date_dep"];
 }
-
 $display=get_flights();
 //var_dump($display);
 $mydate = date("Y-m-d");
@@ -78,7 +77,7 @@ var_dump($_POST);
                         <div>
                             <span class="block">Departs :</span>
                             <strong><?= $display[$i]['dep_time']?></strong>
-                            <span> <?=(array_key_exists('globaldate',$_SESSION))  ? $_SESSION['globaldate'] : 'hello'?> </span>
+                            <span> <?=(array_key_exists('globaldate',$_SESSION))  ? $_SESSION['globaldate'] : ''?> </span>
                             <span class="block"><?= $display[$i]['ville_dep']?></span>
                         </div>
 

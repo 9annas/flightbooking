@@ -9,16 +9,60 @@ if(!array_key_exists('pannier',$_SESSION)){
     $_SESSION['pannier'] = array();
 }
 
+if (array_key_exists('flight_id_delete',$_POST)){
+//    $mytemp = 0;
+//    $comparateur = $_POST['flight_id_delete'];
+//    $limiter = count($_SESSION['pannier']);
+//    for ($i = 0 ; $i < $limiter ;$i++){
+//        $temparray = array();
+//            if($comparateur == $limiter - 1 && $mytemp==0 && $limiter == 1){
+//                break;
+//            }elseif($comparateur == $limiter - 1 && $mytemp==0 && $limiter >1){
+//                array_push($temparray,$_SESSION['pannier'][$i]);
+//                $limiter--;
+//            } elseif($i == $comparateur && $mytemp==0){
+//                array_push($temparray,$_SESSION['pannier'][$i+1]);
+//                $i++;
+//                $mytemp++;
+//            }else{
+//                array_push($temparray,$_SESSION['pannier'][$i]);
+//            }
+//
+//
+////            if (($i == $comparateur) && $mytemp==0){
+////
+////                array_push($temparray,$_SESSION['pannier'][$i+1]);
+////                $mytemp++;
+////                var_dump('hello');
+////                $i++;
+////            }else{
+////                array_push($temparray,$_SESSION['pannier'][$i]);
+////            }
+//    }
+//    $_SESSION['pannier'] = $temparray;
+    $temparray = array();
+    for($i = 0 ; $i < count($_SESSION['pannier']) ;$i++){
+        if(!$_POST['flight_id_delete'] == $i){
+            array_push($temparray , $_SESSION['pannier'][$i]);
+        }
+    }
+    $_SESSION['pannier'] = $temparray;
+}
+
+var_dump($temparray);
+//var_dump($_POST['flight_date']);
+//var_dump($_POST['flight_id']);
+
 if(array_key_exists('flight_date',$_POST) && array_key_exists('flight_id',$_POST)){
     $temp = array();
     array_push($temp , $_POST['flight_date'],$_POST['flight_id']);
-    array_push($_SESSION['pannier'],$temp);
+    array_push($_SESSION['pannier'] , $temp);
     var_dump($temp);
 
 }
 
 var_dump($_SESSION);
-var_dump($_SESSION['pannier'][1][1]);
+//var_dump($_SESSION['pannier'][1][1]);
 ?>
 <! DOCTYPE html>
 <html>
@@ -49,9 +93,7 @@ var_dump($_SESSION['pannier'][1][1]);
                 <div class="prix">
                     <span> <?= $result[0]['price']?>$</span>
                     <form method="post" name="selected_flight" action="">
-                        <input type="hidden" name="flight_id" value="<?=$result[0]['id']?>">
-                        <input type="hidden" name="flight_date" value="<?= $_SESSION['pannier'][$i][0] ?>">
-                        <label for="number">Number of tickets: <?= $result[0]['nb_place']?></label>
+                        <input type="hidden" name="flight_id_delete" value="<?= $i ?>">
                         <!--                            <input id="number" name="number" type="number" min="1">-->
                         <input type="submit" value="DELETE"></>
                     </form>
