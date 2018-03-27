@@ -28,12 +28,12 @@ if (!array_key_exists("monpannier",$_POST)){
 
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 //var_dump($display);
 //var_dump($mydate);
 // || $_POST["date_dep"] < $mydate
-var_dump($_POST);
+//var_dump($_POST);
 ?>
 <! DOCTYPE html>
 <html>
@@ -50,11 +50,11 @@ var_dump($_POST);
 <main>
     <h1 style="text-align: center ; font-size: 5em"   class="myh1"><?= (count($display)==0)? "No Flight available" : "" ?></h1>
         <ul>
-            <form name="myclassdisplayed" method="post">
-                <input type="radio" name="classes" id="all"   value="5" > <label for="all">all types</label>
-                <input type="radio" name="classes" id="eco"   value="2"> <label for="eco">all econnomy</label>
-                <input type="radio" name="classes" id="first" value="1"> <label for="first">all first class</label>
-                <input type="radio" name="classes" id="business" value="3"> <label for="business">all business</label>
+            <form id="formflight" name="myclassdisplayed" method="post">
+                <input class="w3-radio" type="radio" name="classes" id="all"   value="5" > <label for="all">all types</label>
+                <input class="w3-radio" type="radio" name="classes" id="eco"   value="2"> <label for="eco">all econnomy</label>
+                <input class="w3-radio" type="radio" name="classes" id="first" value="1"> <label for="first">all first class</label>
+                <input class="w3-radio" type="radio" name="classes" id="business" value="3"> <label for="business">all business</label>
                 <input type="submit" value="Show">
             </form>
             <?php for ($i = 0 ; $i < count($display) ; $i++){?>
@@ -102,12 +102,10 @@ var_dump($_POST);
             <?php } ?>
         </ul>
         <aside>
-            <div id="side">
                 <figure class="myarticles">
                     <img src="images/aside_img.jpg" alt="image d'une plage">
-                    <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in nunc odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse ex risus, mollis non sem et, hendrerit mollis mauris. Nullam facilisis mollis neque in mattis. Sed posuere enim dictum dui facilisis, eu molestie magna aliquet. Curabitur ut tempus dolor. Curabitur sit amet elit mi. Morbi vel quam eu tellus ultricies dignissim. Morbi sed mauris ipsum.</figcaption>
+                    <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in nunc odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse ex risus, mollis non sem et, hendrerit mollis mauris. Nullam facilisis mollis neque in mattis. Sed posuere enim dictum dui facilisis.</figcaption>
                 </figure>
-            </div>
         </aside>
 </main>
 

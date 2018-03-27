@@ -1,6 +1,11 @@
 <?php
 // Connection
 // Constantes rassemblant les infos de connexion et de schéma de la DB
+//define('HOST', '127.0.0.1');
+//define('USER', 'arif');
+//define('PASS', 'upe3a7a2u');
+//define('DBNAME', 'barif_flightbooking');
+
 define('HOST', '127.0.0.1');
 define('USER', 'root');
 define('PASS', '');

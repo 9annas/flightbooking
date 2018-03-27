@@ -4,7 +4,7 @@ require_once ('db/connection.php');
 if(!isset($_SESSION)){
     session_start();
 }
-var_dump($_POST);
+//var_dump($_POST);
 if(!array_key_exists('pannier',$_SESSION)){
     $_SESSION['pannier'] = array();
 }
@@ -49,7 +49,7 @@ if (array_key_exists('flight_id_delete',$_POST)){
     $_SESSION['pannier'] = $temparray;
 }
 
-var_dump($temparray);
+//var_dump($temparray);
 //var_dump($_POST['flight_date']);
 //var_dump($_POST['flight_id']);
 
@@ -57,11 +57,11 @@ if(array_key_exists('flight_date',$_POST) && array_key_exists('flight_id',$_POST
     $temp = array();
     array_push($temp , $_POST['flight_date'],$_POST['flight_id']);
     array_push($_SESSION['pannier'] , $temp);
-    var_dump($temp);
+//    var_dump($temp);
 
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 //var_dump($_SESSION['pannier'][1][1]);
 ?>
 <! DOCTYPE html>

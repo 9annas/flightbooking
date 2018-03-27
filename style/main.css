@@ -131,6 +131,29 @@ footer ul li{
     height: 15px;
 }
 
+aside{
+    background-color: #efe9a9;
+    display: none;
+    width: 340px;
+
+}
+
+aside figure{
+    text-align: center;
+}
+
+
+aside img{
+    width: 60%;
+    min-width: 260px;
+}
+
+figcaption{
+    display: inline-block;
+    padding: 15px 0px;
+    text-align: justify;
+}
+
 
 
 /************** index.php CSS ******************/

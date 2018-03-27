@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 25 Mars 2018 à 14:34
+-- Généré le :  Mar 27 Mars 2018 à 11:16
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -66,7 +66,10 @@ CREATE TABLE `utilisateur` (
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `username`, `password`, `mail`) VALUES
 (1, 'Arif', 'Badreddine', 'bigg-hkayen125@hotmail.com', '123456', 'bigg-hkayen125@hotmail.com'),
 (2, 'hello', 'world', 'helloworld@hotmail.com', '123456', 'helloworld@hotmail.com'),
-(3, 'Badr', 'Arif', 'bigg@hotmail.com', '123456', 'bigg@hotmail.com');
+(3, 'Badr', 'Arif', 'bigg@hotmail.com', '123456', 'bigg@hotmail.com'),
+(4, 'arif', 'badreddine', 'azeaze@hotmail.com', 'azeazeaze', 'azeaze@hotmail.com'),
+(5, 'uyut', 'yi', 'hah@hotmail.com', 'yuyuyuy', 'hah@hotmail.com'),
+(6, 'babasa', 'qrif', 'arifbadreddine125@hotmail.com', 'azerty=125', 'arifbadreddine125@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -158,7 +161,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `vol`
 --
